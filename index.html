@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/mystyles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero is-small is-primary">
+      <div class="hero-body">
+        <div class="columns">
+          <div class="column is-half hero-content">
+            <p class="title is-1">Welb César</p>
+            <p class="subtitle is-3">Desenvolvedor Fullstack Júnior</p>
+            <button class="button is-rounded">
+              <a href="#about" class="icon is-small">
+                <i class="fas fa-arrow-down"></i>
+              </a>
+            </button>
+          </div>
+          <div class="column">
+            <figure class="image illustration">
+              <img src="static/kindpng_3704903.png" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="main">
+      <!-- Sobre mim -->
+      <p class="title section-title is-1" id="about">Sobre mim</p>
+      <div class="about columns">
+        <!-- Texto -->
+        <div class="column is-three-quarters">
+          <p class="subtitle is-2">
+            Desenvolvedor recém-formado em Análise e Desenvolvimento de
+            Sistemas, em busca de experiência profissional.
+          </p>
+          <p class="subtitle is-5">
+            Tecnologias: Python, Javascript, PostgreSQL, Docker, Linux.
+          </p>
+          <p class="subtitle is-5">
+            Frameworks: Django, Django REST Framework, Flask, Express, React.
+          </p>
+          <p class="subtitle is-5">Educação: Unis, 06/2019-12/2021</p>
+          <a
+            href="static/curriculo.pdf"
+            class="is-link subtitle is-5"
+            target="_blank"
+          >
+            <i class="fas fa-link"></i>
+            Currículo
+          </a>
+        </div>
+        <!-- Foto -->
+        <div class="column">
+          <figure class="image">
+            <img class="is-rounded" src="static/port_pic.jpeg" />
+          </figure>
+        </div>
+      </div>
+
+      <!-- Projetos -->
+      <p class="title section-title is-1">Projetos</p>
+      <div class="projects">
+        <!-- P1. Blog -->
+        <div class="project card columns">
+          <!-- Video -->
+          <div class="column is-half">
+            <video muted autoplay loop controls>
+              <source src="static/django_blog.webm" type="video/mp4" />
+            </video>
+          </div>
+
+          <!-- Descrição -->
+          <div class="column description">
+            <p class="title is-1">Blog</p>
+            <p class="subtitle is-3">
+              Aplicação no estilo Medium, para criar e ler posts.
+            </p>
+            <br />
+            <p class="title is-1">Tecnologias</p>
+            <p class="subtitle is-3">Django (Python), Heroku</p>
+            <a
+              href="https://polar-headland-96686.herokuapp.com"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-link"></i>
+              https://polar-headland-96686.herokuapp.com
+            </a>
+            <br />
+            <a
+              href="https://github.com/welbjr/django_blog"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-code"></i>
+              https://github.com/welbjr/django_blog
+            </a>
+          </div>
+        </div>
+
+        <!-- P2. 2048 -->
+        <div class="project card columns">
+          <!-- Descrição -->
+          <div class="column description">
+            <p class="title is-1">Clone de 2048</p>
+            <p class="subtitle is-3">Clone do jogo 2048, feito com React.</p>
+            <br />
+            <p class="title is-1">Tecnologias</p>
+            <p class="subtitle is-3">React (Javascript)</p>
+            <a
+              href="https://welbjr.github.io/2048/"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-link"></i>
+              https://welbjr.github.io/2048/
+            </a>
+            <br />
+            <a
+              href="https://github.com/welbjr/2048"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-code"></i>
+              https://github.com/welbjr/2048
+            </a>
+          </div>
+
+          <!-- Video -->
+          <div class="column is-half">
+            <video muted autoplay loop controls>
+              <source src="static/2048.webm" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <!-- P3. Art Media -->
+        <div class="project card columns">
+          <!-- Gif -->
+          <div class="column is-half">
+            <img src="static/art_media.gif" />
+          </div>
+
+          <!-- Descrição -->
+          <div class="column description">
+            <p class="title is-1">Art Media</p>
+            <p class="subtitle is-3">Rede social com obras de artes diárias.</p>
+            <br />
+            <p class="title is-1">Tecnologias</p>
+            <p class="subtitle is-3">
+              React (Javascript), Express (Node), Sequelize (PostgreSQL), Redis,
+              Docker, Google Cloud
+            </p>
+            <a
+              href="https://github.com/welbjr/art-media"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-code"></i>
+              https://github.com/welbjr/art-media
+            </a>
+          </div>
+        </div>
+
+        <!-- P4. Github Profiles -->
+        <div class="project card columns">
+          <!-- Descrição -->
+          <div class="column description">
+            <p class="title is-1">Github Profiles</p>
+            <p class="subtitle is-3">
+              Projeto simples para mostrar os perfis de usuários do Github,
+              usando a api do Github.
+            </p>
+            <br />
+            <p class="title is-1">Tecnologias</p>
+            <p class="subtitle is-3">React (Javascript)</p>
+            <a
+              href="https://welbjr.github.io/github_profiles/"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-link"></i>
+              https://welbjr.github.io/github_profiles/
+            </a>
+            <br />
+            <a
+              href="https://github.com/welbjr/github_profiles"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-code"></i>
+              https://github.com/welbjr/github_profiles
+            </a>
+          </div>
+
+          <!-- Video -->
+          <div class="column is-half">
+            <video muted autoplay loop controls>
+              <source src="static/github_profiles.webm" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <!-- P5. Stock Bot -->
+        <div class="project card columns">
+          <!-- Imagem -->
+          <div class="column is-half">
+            <img src="static/stock_bot.png" />
+          </div>
+
+          <!-- Descrição -->
+          <div class="column description">
+            <p class="title is-1">Stock Bot</p>
+            <p class="subtitle is-3">Bot de Telegram que lista ações.</p>
+            <br />
+            <p class="title is-1">Tecnologias</p>
+            <p class="subtitle is-3">Python, Docker, Heroku</p>
+            <a class="is-link">
+              <i class="fas fa-robot"></i>
+              @welb_stock_bot
+            </a>
+            <br />
+            <a
+              href="https://github.com/welbjr/telegram_stock_bot"
+              class="is-link"
+              target="_blank"
+            >
+              <i class="fas fa-code"></i>
+              https://github.com/welbjr/telegram_stock_bot
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong> email: </strong>
+          cesarwelb@gmail.com
+        </p>
+        <p>
+          <strong> github: </strong>
+          <a href="https://github.com/welbjr/" target="_blank"
+            >https://github.com/welbjr/</a
+          >
+        </p>
+        <p>
+          <strong> linkedin: </strong>
+          <a
+            href="https://www.linkedin.com/in/welb-júnior-5675ba22b/"
+            target="_blank"
+            >https://www.linkedin.com/in/welb-júnior-5675ba22b/</a
+          >
+        </p>
+        <p>
+          <strong> cel: </strong>
+          (35) 99876-1942
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
