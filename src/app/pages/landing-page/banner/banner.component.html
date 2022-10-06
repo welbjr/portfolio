@@ -1,0 +1,20 @@
+<mat-toolbar >
+  <span>(botões)</span>
+</mat-toolbar>
+<mat-grid-list
+  (window:resize)="handleResize()"
+  [cols]="cols"
+  [rowHeight]="rowHeight"
+>
+  <mat-grid-tile>
+    <div class="banner-text">
+      <h1>Welb César</h1>
+      <h2 class="typed-element"></h2>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <img src="assets/images/developer.svg"
+         alt="Imagem svg de um desenvolvedor"
+         class="developer-image">
+  </mat-grid-tile>
+</mat-grid-list>
