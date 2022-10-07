@@ -1,0 +1,31 @@
+.resume {
+  background-color: #262626;
+  height: 55vh;
+  padding: 50px;
+}
+
+.language-logo {
+  height: 80px;
+  margin: 0.3rem;
+}
+
+.language-logos {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.resume-download {
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .resume {
+    background-color: #262626;
+    height: 85vh;
+    padding: 50px;
+  }
+}
