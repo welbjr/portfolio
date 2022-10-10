@@ -1,3 +1,18 @@
+.banner-container {
+  display: flex;
+  height: 95vh;
+}
+
+.introduction-container {
+  margin: auto;
+  width: 100%;
+}
+
+.illustration-container {
+  margin: auto;
+  width: 100%;
+}
+
 .developer-image {
   width: 70%;
 }
@@ -14,4 +29,15 @@
   width: 60px;
   height: 60px;
   margin: 0 0.3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .banner-container {
+    flex-wrap: wrap;
+  }
+
+  .developer-image {
+    width: 80%;
+    padding: 10%;
+  }
 }

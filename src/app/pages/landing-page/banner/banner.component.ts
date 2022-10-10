@@ -7,9 +7,6 @@ import Typed from 'typed.js';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-  public cols!: string;
-  public rowHeight!: string;
-
   private typedOptions = {
     strings: ['Desenvolvedor Full Stack'],
     typeSpeed: 100,
@@ -21,32 +18,6 @@ export class BannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.setScreenViewMode();
     this.typed = new Typed('.typed-element', this.typedOptions);
   }
-
-  handleResize() {
-    this.setScreenViewMode();
-  }
-
-  setScreenViewMode(): void {
-    this.isMobile()
-      ? this.setMobileViewMode()
-      : this.setDesktopViewMode();
-  }
-
-  isMobile(): boolean {
-    return window.innerWidth < 900;
-  }
-
-  setMobileViewMode(): void {
-    this.cols = "1";
-    this.rowHeight = "45vh";
-  }
-
-  setDesktopViewMode(): void {
-    this.cols = "2";
-    this.rowHeight = "90vh";
-  }
-
 }
