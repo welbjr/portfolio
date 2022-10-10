@@ -4,7 +4,7 @@ export interface projectCard {
   title: string,
   description: string;
   videoPath: string;
-  languages: string[];
+  languages?: string[];
   detailsLink?: string;
 }
 

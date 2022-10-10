@@ -12,7 +12,7 @@
     <div class="content-container">
       <h2>{{ cardData.title }}</h2>
       <h3>{{ cardData.description }}</h3>
-      <div class="chips">
+      <div *ngIf="cardData.languages" class="chips">
         <mat-chip-list *ngFor="let language of cardData.languages" class="chip">
           <mat-chip>{{ language }}</mat-chip>
         </mat-chip-list>
