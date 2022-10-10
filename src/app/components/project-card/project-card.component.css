@@ -1,0 +1,51 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 50vh;
+}
+
+.video-container {
+  height: 80%;
+  width: 50%;
+}
+
+.video {
+  height: 100%;
+  width: 100%;
+}
+
+.content-container {
+  text-align: center;
+  margin-top: auto;
+  height: 80%;
+  width: 50%;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip {
+  margin: 0 5px 5px ;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-container {
+    height: 75vh;
+  }
+
+  .video-container {
+    height: 50%;
+    width: 100%;
+  }
+
+  .content-container {
+    height: 50%;
+    width: 100%;
+  }
+}

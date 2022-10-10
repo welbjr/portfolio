@@ -1,0 +1,26 @@
+<mat-card>
+  <div class="card-container">
+    <div class="video-container">
+      <video
+        [src]="cardData.videoPath"
+        class="video"
+        autoplay
+        muted
+        controls
+      ></video>
+    </div>
+    <div class="content-container">
+      <h3>{{ cardData.title }}</h3>
+      <h4>{{ cardData.description }}</h4>
+      <div class="chips">
+        <mat-chip-list *ngFor="let language of cardData.languages" class="chip">
+          <mat-chip>{{ language }}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <button mat-stroked-button *ngIf="cardData.detailsLink">
+        Detalhes
+      </button>
+    </div>
+  </div>
+</mat-card>
+
