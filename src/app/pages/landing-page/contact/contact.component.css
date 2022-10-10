@@ -1,0 +1,53 @@
+.contact-container {
+  display: flex;
+  background-color: #262626;
+  height: 55vh;
+  padding: 50px;
+  padding: 25px;
+}
+
+.illustration-container {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-information-container {
+  padding-left: 30px;
+  height: 100%;
+  width: 100%;
+}
+
+.contact-illustration {
+  width: 100%;
+}
+
+.icon-container {
+  margin-bottom: 0.3rem;
+}
+
+.icon {
+  height: 15px;
+  fill: #f0f0f0;
+  margin-right: 3px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  .contact-container {
+    flex-wrap: wrap;
+  }
+
+  .illustration-container {
+    height: 50%;
+    width: 100%;
+  }
+
+  .contact-information-container {
+    height: 50%;
+    width: 100%;
+  }
+}

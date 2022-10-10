@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { ContactComponent } from './pages/landing-page/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatChipsModule } from '@angular/material/chips';
     BannerComponent,
     ResumeComponent,
     ProjectListComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
