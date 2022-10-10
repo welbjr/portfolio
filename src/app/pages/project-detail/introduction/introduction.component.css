@@ -1,0 +1,31 @@
+.introduction-container {
+  display: flex;
+  height: 50vh;
+  padding: 5rem;
+}
+
+.project-text-container {
+  margin: auto;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.project-image-container {
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+}
+
+.round-button {
+  border-radius: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .introduction-container {
+    flex-wrap: wrap;
+    height: 70vh;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="detail-list-container">
+  <div *ngFor="let detail of projectDetails" class="detail-card-container">
+    <app-project-card
+      [cardData]="detail"
+      class="card">
+    </app-project-card>
+  </div>
+</div>

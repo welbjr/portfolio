@@ -1,0 +1,15 @@
+.detail-list-container {
+  background-color: #262626;
+  height: fit-content;
+  padding: 50px;
+}
+
+.card {
+  margin: 3px;
+}
+
+@media only screen and (max-width: 600px) {
+  .detail-list-container {
+    padding: 1rem;
+  }
+}

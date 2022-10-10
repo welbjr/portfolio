@@ -17,6 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { ContactComponent } from './pages/landing-page/contact/contact.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { IntroductionComponent } from './pages/project-detail/introduction/introduction.component';
+import { DetailListComponent } from './pages/project-detail/detail-list/detail-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ContactComponent } from './pages/landing-page/contact/contact.component
     ResumeComponent,
     ProjectListComponent,
     ProjectCardComponent,
-    ContactComponent
+    ContactComponent,
+    ProjectDetailComponent,
+    IntroductionComponent,
+    DetailListComponent
   ],
   imports: [
     BrowserModule,
