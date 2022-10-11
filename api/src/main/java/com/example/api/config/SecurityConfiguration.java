@@ -22,11 +22,12 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests((authorize) -> authorize
-                .antMatchers(HttpMethod.GET).permitAll()
-                .anyRequest().authenticated())
-            .httpBasic(withDefaults())
-            .formLogin(withDefaults());
+        http.authorizeHttpRequests((authorize) -> authorize
+                        .antMatchers(HttpMethod.GET).permitAll()
+                        .anyRequest().authenticated())
+                .csrf().disable()  // desabilitado para permitir métodos http além do 'GET'
+                .httpBasic(withDefaults())
+                .formLogin(withDefaults());
 
         return http.build();
     }
@@ -35,7 +36,7 @@ public class SecurityConfiguration {
     public InMemoryUserDetailsManager userDetailsManager() {
         UserDetails admin = User.builder()
                 .username("tempUser")
-                .password("tempPassword")
+                .password(passwordEncoder.encode("tempPass"))
                 .roles("ADMIN")
                 .build();
 
