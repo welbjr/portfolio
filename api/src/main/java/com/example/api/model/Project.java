@@ -19,8 +19,9 @@ public class Project {
     private int id;
     private String title;
     private String description;
-    private String videoPath;
     private String[] languages;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private Set<ProjectDetail> details;
+    @OneToOne(cascade = CascadeType.ALL)
+    private ProjectMedia media;
 }
