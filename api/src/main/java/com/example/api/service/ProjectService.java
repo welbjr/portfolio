@@ -19,6 +19,10 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
+    public Iterable<Project> findAllProjectsOrderByMadeIn() {
+        return projectRepository.findAllOrderByMadeInAsc();
+    }
+
     public Project saveProject(Project project) {
         return projectRepository.save(project);
     }

@@ -19,7 +19,7 @@ public class ProjectController {
 
     @GetMapping
     public Iterable<Project> getAllProjects() {
-        return projectService.findAllProjects();
+        return projectService.findAllProjectsOrderByMadeIn();
     }
 
     @GetMapping("{id}")
