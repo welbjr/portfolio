@@ -61,4 +61,8 @@ public class ProjectDetailService {
         projectDetailRepository.save(detail);
         return Optional.of(detail);
     }
+
+    public void saveDetail(ProjectDetail detail) {
+        projectDetailRepository.save(detail);
+    }
 }
