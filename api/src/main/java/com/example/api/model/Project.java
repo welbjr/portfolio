@@ -1,6 +1,7 @@
 package com.example.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,10 +25,12 @@ public class Project {
     private String[] languages;
     private String projectLink;
     private String codeLink;
+    private String mediaPath;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate madeIn;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private Set<ProjectDetail> details;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     private ProjectMedia media;
 }

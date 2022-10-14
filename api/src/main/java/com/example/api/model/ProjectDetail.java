@@ -19,8 +19,11 @@ public class ProjectDetail {
     private int id;
     private String title;
     private String description;
-    private String videoPath;
+    private String mediaPath;
     @JsonIgnore
     @ManyToOne
     private Project project;
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    private ProjectMedia media;
 }
