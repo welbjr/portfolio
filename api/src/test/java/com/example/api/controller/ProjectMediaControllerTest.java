@@ -1,7 +1,10 @@
 package com.example.api.controller;
 
+import com.example.api.model.Project;
 import com.example.api.model.ProjectMedia;
+import com.example.api.service.ProjectDetailService;
 import com.example.api.service.ProjectMediaService;
+import com.example.api.service.ProjectService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -22,13 +25,17 @@ import static org.mockito.Mockito.*;
 class ProjectMediaControllerTest {
     @Mock
     private ProjectMediaService projectMediaService;
+    @Mock
+    private ProjectService projectService;
+    @Mock
+    private ProjectDetailService projectDetailService;
 
     @InjectMocks
     private ProjectMediaController projectMediaController;
 
     @BeforeEach
     void setUp() {
-        projectMediaController = new ProjectMediaController(projectMediaService);
+        projectMediaController = new ProjectMediaController(projectMediaService, projectService, projectDetailService);
     }
 
     @Test
@@ -54,12 +61,13 @@ class ProjectMediaControllerTest {
 
     @Test
     void createMedia() throws IOException {
+        Project project = new Project();
+        project.setId(1);
         MultipartFile file = mock(MultipartFile.class);
         ProjectMedia media = new ProjectMedia();
-        media.setId(1);
 
-        doReturn(Optional.of(media)).when(projectMediaService).createMedia(media.getId(), file);
-        ResponseEntity result = projectMediaController.createMedia(media.getId(), file);
+        doReturn(Optional.of(media)).when(projectMediaService).createMedia(project, file);
+        ResponseEntity result = projectMediaController.createProjectMedia(project.getId(), file);
 
         assertEquals(result.getStatusCode(), HttpStatus.CREATED);
     }
