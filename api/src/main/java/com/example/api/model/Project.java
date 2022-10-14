@@ -22,6 +22,8 @@ public class Project {
     private String title;
     private String description;
     private String[] languages;
+    private String projectLink;
+    private String codeLink;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate madeIn;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
