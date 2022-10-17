@@ -15,9 +15,9 @@ public class ProjectResumeService {
         this.projectResumeRepository = projectResumeRepository;
     }
 
-    public ProjectResume getResume() {
+    public byte[] getResume() {
         ProjectResume resume = projectResumeRepository.findAll().iterator().next();
-        return resume;
+        return resume.getData();
     }
 
     public ProjectResume createResume(MultipartFile file) throws IOException {

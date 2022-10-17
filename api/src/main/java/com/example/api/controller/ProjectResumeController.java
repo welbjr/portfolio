@@ -2,6 +2,7 @@ package com.example.api.controller;
 
 import com.example.api.model.ProjectResume;
 import com.example.api.service.ProjectResumeService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,8 +17,8 @@ public class ProjectResumeController {
         this.resumeService = resumeService;
     }
 
-    @GetMapping
-    public ProjectResume getResume() {
+    @GetMapping(produces = MediaType.APPLICATION_PDF_VALUE)
+    public byte[] getResume() {
         return resumeService.getResume();
     }
 
