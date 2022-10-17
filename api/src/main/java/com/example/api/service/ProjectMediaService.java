@@ -1,6 +1,6 @@
 package com.example.api.service;
 
-import com.example.api.model.Project;
+import com.example.api.model.ProjectDescription;
 import com.example.api.model.ProjectDetail;
 import com.example.api.model.ProjectMedia;
 import com.example.api.repository.ProjectMediaRepository;
@@ -29,14 +29,8 @@ public class ProjectMediaService {
         return projectMediaRepository.getNames();
     }
 
-    public Optional<byte[]> getMediaData(Project project) {
-        int mediaId = project.getMedia().getId();
-        byte[] mediaData = projectMediaRepository.findById(mediaId).get().getData();
-        return Optional.of(mediaData);
-    }
-
-    public Optional<byte[]> getMediaData(ProjectDetail detail) {
-        int mediaId = detail.getMedia().getId();
+    public Optional<byte[]> getMediaData(ProjectDescription projectDescription) {
+        int mediaId = projectDescription.getMedia().getId();
         byte[] mediaData = projectMediaRepository.findById(mediaId).get().getData();
         return Optional.of(mediaData);
     }
@@ -49,84 +43,42 @@ public class ProjectMediaService {
         return projectMediaRepository.findById(id);
     }
 
-    public Optional deleteMedia(Project project) {
-        ProjectMedia media = project.getMedia();
+    public Optional<ProjectDescription> deleteMedia(ProjectDescription projectDescription) {
+        ProjectMedia media = projectDescription.getMedia();
         if (media == null) {
             return Optional.empty();
         }
-        project.setMedia(null);
-        project.setMediaPath(null);
-        projectService.saveProject(project);
+        projectDescription.setMedia(null);
+        projectDescription.setMediaPath(null);
         projectMediaRepository.delete(media);
-        return Optional.of(media);
+        return Optional.of(projectDescription);
     }
 
-    public Optional deleteMedia(ProjectDetail detail) {
-        ProjectMedia media = detail.getMedia();
-        if (media == null) {
+    public Optional<ProjectDescription> createMedia(
+            ProjectDescription projectDescription, MultipartFile file) throws IOException {
+        if (projectDescription.getMedia() != null) {
             return Optional.empty();
         }
-        detail.setMedia(null);
-        detail.setMediaPath(null);
-        projectDetailService.saveDetail(detail);
-        projectMediaRepository.delete(media);
-        return Optional.of(media);
-    }
-
-    public Optional createMedia(Project project, MultipartFile file) throws IOException {
-        if (project.getMedia() != null) {
-            return Optional.empty();
-        }
-
         ProjectMedia media = createProjectMedia(file);
-
         ProjectMedia savedMedia = projectMediaRepository.save(media);
-        project.setMedia(savedMedia);
-        project.setMediaPath("media/project/" + project.getId());
-        projectService.saveProject(project);
-        return Optional.of(savedMedia);
+
+        String path = projectDescription.getClass() == ProjectDetail.class ? "project-detail/" : "project/";
+        projectDescription.setMedia(savedMedia);
+        projectDescription.setMediaPath("media/" + path + projectDescription.getId());
+        return Optional.of(projectDescription);
     }
 
-    public Optional createMedia(ProjectDetail detail, MultipartFile file) throws IOException {
-        if (detail.getMedia() != null) {
-            return Optional.empty();
-        }
-
-        ProjectMedia media = createProjectMedia(file);
-
-        ProjectMedia savedMedia = projectMediaRepository.save(media);
-        detail.setMedia(savedMedia);
-        detail.setMediaPath("media/project-detail/" + detail.getId());
-        projectDetailService.saveDetail(detail);
-        return Optional.of(savedMedia);
-    }
-
-    public Optional updateMedia(Project project, MultipartFile file) throws IOException {
-        ProjectMedia oldMedia = project.getMedia();
+    public Optional<ProjectDescription> updateMedia(
+            ProjectDescription projectDescription, MultipartFile file) throws IOException {
+        ProjectMedia oldMedia = projectDescription.getMedia();
         if (oldMedia == null) {
             return Optional.empty();
         }
-        Optional optionalDeletedMedia = deleteMedia(project);
+        Optional optionalDeletedMedia = deleteMedia(projectDescription);
         if (optionalDeletedMedia.isEmpty()) {
             return Optional.empty();
         }
-        Optional<ProjectMedia> optionalMedia = createMedia(project, file);
-        if (optionalMedia.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(optionalMedia.get());
-    }
-
-    public Optional updateMedia(ProjectDetail detail, MultipartFile file) throws IOException {
-        ProjectMedia oldMedia = detail.getMedia();
-        if (oldMedia == null) {
-            return Optional.empty();
-        }
-        Optional optionalDeletedMedia = deleteMedia(detail);
-        if (optionalDeletedMedia.isEmpty()) {
-            return Optional.empty();
-        }
-        Optional<ProjectMedia> optionalMedia = createMedia(detail, file);
+        Optional<ProjectDescription> optionalMedia = createMedia(projectDescription, file);
         if (optionalMedia.isEmpty()) {
             return Optional.empty();
         }

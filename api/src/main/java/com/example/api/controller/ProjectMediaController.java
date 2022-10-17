@@ -1,8 +1,8 @@
 package com.example.api.controller;
 
 import com.example.api.model.Project;
+import com.example.api.model.ProjectDescription;
 import com.example.api.model.ProjectDetail;
-import com.example.api.model.ProjectMedia;
 import com.example.api.service.ProjectDetailService;
 import com.example.api.service.ProjectMediaService;
 import com.example.api.service.ProjectService;
@@ -17,8 +17,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/media")
 public class ProjectMediaController {
-
-    // todo: refatorar
 
     private final ProjectMediaService projectMediaService;
     private final ProjectService projectService;
@@ -67,7 +65,11 @@ public class ProjectMediaController {
         if (optionalProject.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        Optional<ProjectMedia> optionalMedia = projectMediaService.deleteMedia(optionalProject.get());
+        Optional<ProjectDescription> optionalMedia = projectMediaService.deleteMedia(optionalProject.get());
+        if (optionalMedia.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        projectService.saveProject(optionalProject.get());
         return optionalMedia.isEmpty()
                 ? ResponseEntity.status(HttpStatus.NOT_FOUND).build()
                 : ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -79,7 +81,11 @@ public class ProjectMediaController {
         if (optionalDetail.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        Optional<ProjectMedia> optionalMedia = projectMediaService.deleteMedia(optionalDetail.get());
+        Optional<ProjectDescription> optionalMedia = projectMediaService.deleteMedia(optionalDetail.get());
+        if (optionalMedia.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        projectDetailService.saveDetail(optionalDetail.get());
         return optionalMedia.isEmpty()
                 ? ResponseEntity.status(HttpStatus.NOT_FOUND).build()
                 : ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -87,68 +93,84 @@ public class ProjectMediaController {
 
     @PostMapping("project/{parentId}")
     public ResponseEntity createProjectMedia(@PathVariable int parentId, @RequestParam MultipartFile media) {
-        Optional<ProjectMedia> optionalMedia;
+        Optional<ProjectDescription> optionalProjectDescription;
         try {
             Optional<Project> optionalProject = projectService.findProjectById(parentId);
             if (optionalProject.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
-            optionalMedia = projectMediaService.createMedia(optionalProject.get(), media);
+            optionalProjectDescription = projectMediaService.createMedia(optionalProject.get(), media);
+            if (optionalProjectDescription.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
+            projectService.saveProject(optionalProject.get());
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return optionalMedia.isEmpty()
+        return optionalProjectDescription.isEmpty()
                 ? ResponseEntity.status(HttpStatus.BAD_REQUEST).build()
                 : ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PostMapping("project-detail/{parentId}")
     public ResponseEntity createDetailMedia(@PathVariable int parentId, @RequestParam MultipartFile media) {
-        Optional<ProjectMedia> optionalMedia;
+        Optional<ProjectDescription> optionalProjectDescription;
         try {
             Optional<ProjectDetail> optionalDetail = projectDetailService.findDetailById(parentId);
             if (optionalDetail.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
-            optionalMedia = projectMediaService.createMedia(optionalDetail.get(), media);
+            optionalProjectDescription = projectMediaService.createMedia(optionalDetail.get(), media);
+            if (optionalProjectDescription.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
+            projectDetailService.saveDetail(optionalDetail.get());
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return optionalMedia.isEmpty()
+        return optionalProjectDescription.isEmpty()
                 ? ResponseEntity.status(HttpStatus.BAD_REQUEST).build()
                 : ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("project/{parentId}")
     public ResponseEntity updatedProjectMedia(@PathVariable int parentId, @RequestParam MultipartFile media) {
-        Optional<ProjectMedia> optionalMedia;
+        Optional<ProjectDescription> optionalProjectDescription;
         try {
             Optional<Project> optionalProject = projectService.findProjectById(parentId);
             if (optionalProject.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
-            optionalMedia = projectMediaService.updateMedia(optionalProject.get(), media);
+            optionalProjectDescription = projectMediaService.updateMedia(optionalProject.get(), media);
+            if (optionalProjectDescription.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
+            projectService.saveProject(optionalProject.get());
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return optionalMedia.isEmpty()
+        return optionalProjectDescription.isEmpty()
                 ? ResponseEntity.status(HttpStatus.BAD_REQUEST).build()
                 : ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PutMapping("project-detail/{parentId}")
     public ResponseEntity updatedDetailMedia(@PathVariable int parentId, @RequestParam MultipartFile media) {
-        Optional<ProjectMedia> optionalMedia;
+        Optional<ProjectDescription> optionalProjectDescription;
         try {
             Optional<ProjectDetail> optionalDetail = projectDetailService.findDetailById(parentId);
             if (optionalDetail.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
-            optionalMedia = projectMediaService.updateMedia(optionalDetail.get(), media);
+            optionalProjectDescription = projectMediaService.updateMedia(optionalDetail.get(), media);
+            if (optionalProjectDescription.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
+            projectDetailService.saveDetail(optionalDetail.get());
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return optionalMedia.isEmpty()
+        return optionalProjectDescription.isEmpty()
                 ? ResponseEntity.status(HttpStatus.BAD_REQUEST).build()
                 : ResponseEntity.status(HttpStatus.OK).build();
     }
