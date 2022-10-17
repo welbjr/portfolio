@@ -24,6 +24,11 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfiguration {
     private final PasswordEncoder passwordEncoder =
             PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    private final PortfolioConfigurationProperties portfolioProperties;
+
+    public SecurityConfiguration(PortfolioConfigurationProperties portfolioProperties) {
+        this.portfolioProperties = portfolioProperties;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -42,8 +47,8 @@ public class SecurityConfiguration {
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
         UserDetails admin = User.builder()
-                .username("tempUser")
-                .password(passwordEncoder.encode("tempPass"))
+                .username(portfolioProperties.username())
+                .password(passwordEncoder.encode(portfolioProperties.password()))
                 .roles("ADMIN")
                 .build();
 
