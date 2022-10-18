@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { projectCard } from 'src/app/components/project-card/project-card.component';
+import { Project, ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -7,19 +7,22 @@ import { projectCard } from 'src/app/components/project-card/project-card.compon
   styleUrls: ['./project-list.component.css']
 })
 export class ProjectListComponent implements OnInit {
-  public tempCardData: projectCard;
+  public projects: Project[] = [];
 
-  constructor() {
-    this.tempCardData = {
-      title: "Hello World",
-      description: "Lorem ipsum dolor sit amet.",
-      videoPath: "https://welbjr.github.io/portfolio/static/provincia_admin-geral.mkv",
-      languages: ['java', 'spring', 'typescript', 'angular', 'heroku'],
-      detailsLink: '/todo'
-    }
+  constructor(private projectService: ProjectService) {
   }
 
   ngOnInit(): void {
+    this.getProjects();
+  }
+
+  getProjects() {
+    this.projectService.getProjects()
+      .subscribe({
+        next: (projects) => this.projects.push(...projects),
+      });
+      console.log(this.projects);
+
   }
 
 }

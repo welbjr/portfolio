@@ -1,3 +1,7 @@
+a {
+  padding: 10px;
+}
+
 .banner-container {
   display: flex;
   height: 95vh;

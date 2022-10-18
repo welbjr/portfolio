@@ -1,25 +1,52 @@
 <mat-card>
   <div class="card-container">
     <div class="video-container">
-      <video
-        [src]="cardData.videoPath"
+      <video *ngIf="cardData.mediaPath"
+        [src]="url + '/' + cardData.mediaPath"
         class="video"
         autoplay
         muted
         controls
-      ></video>
+      >
+    </video>
     </div>
     <div class="content-container">
       <h2>{{ cardData.title }}</h2>
       <h3>{{ cardData.description }}</h3>
-      <div *ngIf="cardData.languages" class="chips">
-        <mat-chip-list *ngFor="let language of cardData.languages" class="chip">
+      <a
+        *ngIf="cardData.projectLink"
+        mat-icon-button
+        [href]="cardData.projectLink"
+        target="_blank"
+      >
+        <mat-icon>link</mat-icon>
+      </a>
+      <a
+        *ngIf="cardData.codeLink"
+        mat-icon-button
+        [href]="cardData.codeLink"
+        target="_blank"
+      >
+        <mat-icon>code</mat-icon>
+      </a>
+      <div
+        *ngIf="cardData.languages"
+        class="chips"
+      >
+        <mat-chip-list
+          *ngFor="let language of cardData.languages"
+          class="chip"
+        >
           <mat-chip>{{ language }}</mat-chip>
         </mat-chip-list>
       </div>
-      <button mat-stroked-button *ngIf="cardData.detailsLink">
+      <a
+        [routerLink]="['/detail', cardData.id]"
+        *ngIf="cardData.details && cardData.details.length > 0"
+        mat-stroked-button
+      >
         Detalhes
-      </button>
+      </a>
     </div>
   </div>
 </mat-card>

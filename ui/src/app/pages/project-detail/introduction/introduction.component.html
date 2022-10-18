@@ -1,11 +1,11 @@
-<div class="introduction-container">
+<div *ngIf="project" class="introduction-container">
   <div class="project-text-container">
-    <h1>Título</h1>
-    <h2>Descrição</h2>
-    <button mat-stroked-button class="round-button">
+    <h1>{{ project.title }}</h1>
+    <h2>{{ project.description }}</h2>
+    <a href="/" mat-stroked-button class="round-button">
       <mat-icon>navigate_before</mat-icon>
       <span>Voltar</span>
-    </button>
+    </a>
   </div>
   <div class="project-image-container">
     <img

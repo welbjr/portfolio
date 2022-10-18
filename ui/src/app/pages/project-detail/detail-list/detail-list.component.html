@@ -1,5 +1,5 @@
-<div class="detail-list-container">
-  <div *ngFor="let detail of projectDetails" class="detail-card-container">
+<div *ngIf="project" class="detail-list-container">
+  <div *ngFor="let detail of project.details" class="detail-card-container">
     <app-project-card
       [cardData]="detail"
       class="card">

@@ -20,6 +20,7 @@ import { ContactComponent } from './pages/landing-page/contact/contact.component
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { IntroductionComponent } from './pages/project-detail/introduction/introduction.component';
 import { DetailListComponent } from './pages/project-detail/detail-list/detail-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DetailListComponent } from './pages/project-detail/detail-list/detail-l
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     // Material
     MatGridListModule,

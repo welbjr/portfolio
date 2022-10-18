@@ -17,9 +17,13 @@
   </div>
 
   <div class="resume-download">
-    <button mat-stroked-button color="primary" class="round-button">
+    <a
+      [href]="resumeUrl"
+      mat-stroked-button class="round-button"
+      target="_blank"
+    >
       <mat-icon>download</mat-icon>
       Currículo Completo
-    </button>
+    </a>
   </div>
 </div>

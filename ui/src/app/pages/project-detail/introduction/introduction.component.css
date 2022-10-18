@@ -1,3 +1,8 @@
+a {
+  text-decoration: none;
+  color: #ededed;
+}
+
 .introduction-container {
   display: flex;
   height: 50vh;

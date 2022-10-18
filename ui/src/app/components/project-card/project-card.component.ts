@@ -1,12 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-export interface projectCard {
-  title: string,
-  description: string;
-  videoPath: string;
-  languages?: string[];
-  detailsLink?: string;
-}
+import { Project } from 'src/app/services/project.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-card',
@@ -15,9 +9,11 @@ export interface projectCard {
 })
 export class ProjectCardComponent implements OnInit {
   @Input()
-  public cardData!: projectCard;
+  public cardData!: Project;
+  public url: string = environment.apiUrl;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

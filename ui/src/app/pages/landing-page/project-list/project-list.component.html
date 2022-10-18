@@ -1,6 +1,6 @@
 <div class="project-list">
   <h2>Projetos</h2>
-  <app-project-card [cardData]="tempCardData" class="card"></app-project-card>
-  <app-project-card [cardData]="tempCardData" class="card"></app-project-card>
-  <app-project-card [cardData]="tempCardData" class="card"></app-project-card>
+  <div *ngFor="let project of projects">
+   <app-project-card [cardData]="project" class="card"></app-project-card>
+  </div>
 </div>

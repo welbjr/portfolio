@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Project, ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-introduction',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./introduction.component.css']
 })
 export class IntroductionComponent implements OnInit {
+  @Input()
+  public project!: Project;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }
